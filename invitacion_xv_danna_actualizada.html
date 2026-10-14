@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071b43">
+<title>Mis XV | Danna Lucía</title>
+<style>
+:root{--navy:#092452;--blue:#173f7c;--silver:#cbd5e4;--ink:#18243b;--white:#fff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#f8faff;color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+button,a{font:inherit}
+button{cursor:pointer}
+.hero{min-height:100svh;display:grid;place-items:center;position:relative;overflow:hidden;padding:28px 18px;background:radial-gradient(circle at 50% 8%,#e8f0ff 0,#fff 40%,#f1f5fc 100%)}
+.hero:before,.hero:after{content:"";position:absolute;border:1px solid #cbd5e4;border-radius:50%;width:75vw;height:75vw;max-width:650px;max-height:650px;opacity:.65}
+.hero:after{width:58vw;height:58vw;max-width:500px;max-height:500px}
+.sparkles{position:absolute;inset:0;pointer-events:none;background-image:radial-gradient(circle,#9eb7e2 1px,transparent 1.8px),radial-gradient(circle,#d6dfea 1px,transparent 1.8px);background-size:83px 83px,127px 127px;background-position:12px 19px,44px 61px;opacity:.6}
+.envelope-wrap{position:relative;z-index:1;text-align:center;width:min(100%,470px)}
+.kicker{font:600 10px/1.8 Arial,sans-serif;letter-spacing:.35em;text-transform:uppercase;color:var(--blue)}
+.envelope{width:min(78vw,330px);height:210px;margin:28px auto 25px;position:relative;filter:drop-shadow(0 16px 18px #09245218);transition:transform .6s}
+.envelope .base{position:absolute;inset:0;background:linear-gradient(145deg,#fff,#eaf0f9);border:1px solid #d6deeb;border-radius:4px}
+.envelope .flap{position:absolute;inset:0;background:linear-gradient(135deg,#f8fbff,#dbe5f5);clip-path:polygon(0 0,100% 0,50% 62%);transform-origin:top;transition:transform .7s;z-index:2;border-top:1px solid #d0d9e8}
+.envelope .fold{position:absolute;inset:0;clip-path:polygon(0 100%,0 0,50% 60%,100% 0,100% 100%);background:linear-gradient(120deg,#fff,#e8eef8);border:1px solid #d6deeb;z-index:3}
+.seal{position:absolute;z-index:4;left:50%;top:55%;transform:translate(-50%,-50%);width:53px;height:53px;border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;border:2px solid #d8e0ed;box-shadow:0 0 0 4px #fff8;font-size:23px;transition:opacity .3s}
+.envelope.open .flap{transform:rotateX(180deg);opacity:.35}.envelope.open .seal{opacity:0}
+h1{font-weight:400;letter-spacing:.04em;font-size:clamp(38px,10vw,65px);line-height:1.02;margin:15px 0;color:var(--navy)}
+.subtitle{font-style:italic;color:#586a88;font-size:17px}
+.btn{border:1px solid var(--navy);border-radius:999px;padding:13px 22px;background:var(--navy);color:#fff;letter-spacing:.08em;font:600 11px Arial,sans-serif;text-transform:uppercase;box-shadow:0 8px 22px #09245220}
+.btn.secondary{background:#fff;color:var(--navy);box-shadow:none}
+main{display:none}main.show{display:block}
+.section{padding:78px 22px;text-align:center;position:relative;overflow:hidden}
+.section.white{background:#fff}.section.blue{background:var(--navy);color:#fff}
+.overline{font:600 10px Arial,sans-serif;letter-spacing:.32em;text-transform:uppercase;color:#7891bb}
+.blue .overline{color:#b6c9eb}
+.section h2{font-size:clamp(32px,8vw,49px);font-weight:400;line-height:1.1;margin:15px auto;color:var(--navy)}
+.blue h2{color:#fff}
+.intro{max-width:520px;margin:0 auto;color:#64718a;font-size:17px;line-height:1.7}
+.blue .intro{color:#d6e0f2}
+.disco{width:132px;height:132px;border-radius:50%;margin:26px auto;background:repeating-conic-gradient(from 4deg,#fff 0 7deg,#b8c8e3 8deg 10deg,#e9eef8 11deg 18deg);border:7px solid #e8edf6;box-shadow:0 0 0 1px #a9bad7,0 0 36px #7e9ed855;position:relative;animation:float 5s ease-in-out infinite}
+.disco:before{content:"";position:absolute;inset:42%;border-radius:50%;background:linear-gradient(135deg,#092452,#3867a9);border:2px solid #fff}
+@keyframes float{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(8deg)}}
+.datebox{max-width:420px;margin:32px auto 0;padding:25px 18px;border-top:1px solid #cbd5e4;border-bottom:1px solid #cbd5e4;display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:10px}
+.datebox strong{display:block;font-size:44px;font-weight:400;color:var(--navy)}.datebox span{font:10px Arial,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#64718a}
+.details{max-width:520px;margin:30px auto;display:grid;gap:14px}
+.detail{border:1px solid #dce4f0;background:#fff;padding:20px 16px;border-radius:12px}
+.detail b{display:block;color:var(--navy);font:600 10px Arial,sans-serif;letter-spacing:.2em;text-transform:uppercase;margin-bottom:9px}
+.detail span{font-size:17px;color:#5d6c85}
+.countdown{display:flex;justify-content:center;gap:10px;margin:28px 0;flex-wrap:wrap}
+.count{min-width:70px;padding:13px 9px;border:1px solid #506993;border-radius:10px}
+.count strong{font-size:28px;font-weight:400;display:block}.count span{font:9px Arial,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#b6c9eb}
+footer{padding:30px 15px;text-align:center;background:#061735;color:#dce6f7;font-size:13px;font-style:italic}
+.music{position:fixed;right:14px;bottom:14px;z-index:5;border:1px solid #d1dced;border-radius:999px;background:#fff;color:var(--navy);padding:12px 15px;box-shadow:0 5px 18px #09245222;font:600 11px Arial,sans-serif;display:none}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s,transform .8s}.reveal.visible{opacity:1;transform:none}
+.note{font:12px/1.6 Arial,sans-serif;color:#7c879a;margin-top:22px}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<section class="hero" id="start">
+ <div class="sparkles"></div>
+ <div class="envelope-wrap">
+  <div class="kicker">Una noche para brillar · 2026</div>
+  <div class="envelope" id="envelope" aria-label="Sobre de invitación">
+   <div class="base"></div><div class="flap"></div><div class="fold"></div><div class="seal">✦</div>
+  </div>
+  <p class="subtitle">Estás cordialmente invitado/a a celebrar</p>
+  <h1 style="font-size:clamp(32px,8vw,48px)">Mis XV años</h1>
+  <button class="btn" id="openInvite">Abrir invitación ✦</button>
+  <p class="note">Danna Lucía Pacheco Restrepo</p>
+ </div>
+</section>
+<main id="invitation">
+ <section class="section white">
+  <div class="overline reveal">Una noche mágica</div>
+  <div class="disco reveal" aria-hidden="true"></div>
+  <h2 class="reveal">Danna Lucía<br><i>Mis XV años</i></h2>
+  <p class="intro reveal">Hay momentos que brillan para siempre. Me encantaría compartir contigo una noche llena de música, alegría y recuerdos inolvidables.</p>
+  <div class="datebox reveal"><div><span>Domingo</span></div><div><strong>15</strong><span>Noviembre · 2026</span></div><div><span>Mis XV</span></div></div>
+  <p class="note reveal">Blanco, azul noche y destellos de plata 🪩</p>
+ </section>
+ <section class="section blue">
+  <div class="overline reveal">Cuenta regresiva</div><h2 class="reveal">La noche se acerca</h2>
+  <p class="intro reveal">¡Prepárate para brillar conmigo!</p>
+  <div class="countdown reveal" id="countdown">
+   <div class="count"><strong id="days">—</strong><span>Días</span></div><div class="count"><strong id="hours">—</strong><span>Horas</span></div><div class="count"><strong id="minutes">—</strong><span>Minutos</span></div><div class="count"><strong id="seconds">—</strong><span>Segundos</span></div>
+  </div>
+ </section>
+ <section class="section white">
+  <div class="overline reveal">Guarda la fecha</div><h2 class="reveal">Celebremos juntos</h2>
+  <div class="details">
+   <div class="detail reveal"><b>La hora</b><span>8:00 p. m. – 2:00 a. m.</span></div>
+   <div class="detail reveal"><b>El lugar</b><span>Salón de Eventos D'C Event Planning · Dirección por confirmar</span></div>
+   <div class="detail reveal"><b>Vestuario</b><span>[Agregar código de vestuario, si aplica]</span></div>
+  </div>
+  <p class="intro reveal">Tu presencia hará esta noche aún más especial.</p>
+  <a class="btn" id="rsvp" href="#" target="_blank" rel="noopener">Confirmar asistencia</a>
+  <p class="note">El botón de confirmación se conectará a WhatsApp cuando agreguemos el número.</p>
+ </section>
+ <footer>Con cariño, Danna Lucía · Mis XV años ✦</footer>
+</main>
+<button class="music" id="musicBtn" type="button">♫ Activar música</button>
+<audio id="music" loop preload="none" src="musica.mp3"></audio>
+<script>
+const openBtn=document.getElementById('openInvite'), env=document.getElementById('envelope'), main=document.getElementById('invitation'), musicBtn=document.getElementById('musicBtn'), audio=document.getElementById('music');
+openBtn.addEventListener('click',()=>{env.classList.add('open');openBtn.textContent='Desliza para descubrir ↓';setTimeout(()=>{main.classList.add('show');musicBtn.style.display='block';main.scrollIntoView({behavior:'smooth'});observeReveals()},450)});
+let playing=false;
+musicBtn.addEventListener('click',async()=>{if(!audio.src || !audio.src.endsWith('/musica.mp3')){alert('Añade tu archivo de audio a la carpeta de la página y llámalo musica.mp3. Usa una canción que tengas permiso para compartir.');return}try{if(!playing){await audio.play();playing=true;musicBtn.textContent='♫ Pausar música'}else{audio.pause();playing=false;musicBtn.textContent='♫ Activar música'}}catch(e){alert('No se pudo reproducir. Toca de nuevo para intentarlo.')}});
+function updateCountdown(){const target=new Date('2026-11-15T18:00:00');const diff=target-new Date();const val=Math.max(0,diff);document.getElementById('days').textContent=Math.floor(val/86400000);document.getElementById('hours').textContent=Math.floor(val%86400000/3600000);document.getElementById('minutes').textContent=Math.floor(val%3600000/60000);document.getElementById('seconds').textContent=Math.floor(val%60000/1000)}
+updateCountdown();setInterval(updateCountdown,1000);
+function observeReveals(){const els=document.querySelectorAll('.reveal');if(!('IntersectionObserver'in window)){els.forEach(e=>e.classList.add('visible'));return}const io=new IntersectionObserver(entries=>entries.forEach(en=>{if(en.isIntersecting){en.target.classList.add('visible');io.unobserve(en.target)}}),{threshold:.12});els.forEach(e=>io.observe(e))}
+</script>
+</body>
+</html>
